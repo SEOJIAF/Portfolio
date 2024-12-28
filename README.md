@@ -7,7 +7,7 @@ This is where I showcase my skills, projects, and online presence as a **Develop
 
 ## 🌐 Live Demo
 
-You can view my portfolio live at: [not-ready-yet](told-you.com)
+You can view my portfolio live at: [Here!](seojiaf.vercel.app)
 ---
 
 ## 📋 Features
