@@ -3,31 +3,411 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peak HTML</title>
+    <meta name="description" content="Peak HTML - A manifesto for minimal web development. No frameworks, no bloat, just pure HTML/CSS under 14kb.">
+    <title>Peak HTML - The Manifesto</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             background: #dadada;
-             color: rgb(24, 24, 24);
+            color: rgb(24, 24, 24);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            padding: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            transition: background 0.3s, color 0.3s;
         }
+        
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #1a1a1a;
+                color: #e0e0e0;
+            }
+            a {
+                color: #58a6ff;
+            }
+            a:visited {
+                color: #8e96f0;
+            }
+            .stats {
+                background: #2d2d2d;
+                border-color: #444;
+            }
+        }
+        
+        header {
+            text-align: center;
+            margin: 2rem 0 3rem;
+        }
+        
+        .ascii-art {
+            font-family: monospace;
+            white-space: pre;
+            font-size: 0.6rem;
+            line-height: 1.2;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
         h1 {
             margin: 0.5em 0;
             font-size: 2em;
+            font-weight: 900;
+        }
+        
+        h2 {
+            margin: 2rem 0 1rem;
+            font-size: 1.75em;
+            font-weight: 700;
+            border-bottom: 2px solid currentColor;
+            padding-bottom: 0.3rem;
+        }
+        
+        h3 {
+            margin: 1.5rem 0 0.75rem;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+        
+        p {
+            margin: 1rem 0;
+        }
+        
+        a {
+            color: #0066cc;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-bottom 0.2s;
+        }
+        
+        a:hover {
+            border-bottom: 1px solid currentColor;
+        }
+        
+        a:visited {
+            color: #551a8b;
+        }
+        
+        .manifesto {
+            margin: 2rem 0;
+        }
+        
+        .hot-take {
+            margin: 1rem 0;
+            padding-left: 1rem;
+            border-left: 3px solid currentColor;
+        }
+        
+        .principles {
+            margin: 2rem 0;
+        }
+        
+        .principles ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .principles li {
+            margin: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .principles li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .projects {
+            margin: 2rem 0;
+        }
+        
+        .projects ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .projects li {
+            margin: 0.75rem 0;
+            padding: 0.5rem;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 3px;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            .projects li {
+                background: rgba(255, 255, 255, 0.05);
+            }
+        }
+        
+        .stats {
+            background: #f5f5f5;
+            border: 2px solid #ccc;
+            padding: 1rem;
+            margin: 2rem 0;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        footer {
+            margin: 4rem 0 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid currentColor;
+            text-align: center;
+        }
+        
+        .footer-links {
+            margin: 1rem 0;
+        }
+        
+        .footer-links a {
+            margin: 0 1rem;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: #28a745;
+            color: white;
+            border-radius: 3px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        
+        .view-source {
+            background: rgba(255, 193, 7, 0.2);
+            border: 2px dashed #ffc107;
+            padding: 1rem;
+            margin: 2rem 0;
+            text-align: center;
+            border-radius: 3px;
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 0.5rem;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+            
+            h2 {
+                font-size: 1.3em;
+            }
+            
+            .ascii-art {
+                font-size: 0.45rem;
+            }
+            
+            .footer-links a {
+                display: block;
+                margin: 0.5rem 0;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>THIS IS what peak HTML looks like!</h1>
-    <h1>You do not need your frameworks.</h1>
-    <h1>BLOAT!</h1>
-    <h1>If your site is more than 14kb</h1>
-    <h1>You are either making the new Facebook</h1>
-    <h1>Or something is really wrong</h1>
-    <p>thats it, thats the message i wanted you to see</p>
-    <p>nothing is hidden in the console</p>
-</body>
+    <header>
+        <div class="ascii-art">
+ ____  _____    _    _  __  _   _ _____ __  __ _     
+|  _ \| ____|  / \  | |/ / | | | |_   _|  \/  | |    
+| |_) |  _|   / _ \ | ' /  | |_| | | | | |\/| | |    
+|  __/| |___ / ___ \| . \  |  _  | | | | |  | | |___ 
+|_|   |_____/_/   \_\_|\_\ |_| |_| |_| |_|  |_|_____|
+        </div>
+        <h1>THIS IS what peak HTML looks like!</h1>
+    </header>
 
-<script>
-    console.log("you are too gullible");
-    console.log("https://gitea.oryks.org");
-</script>
+    <section class="manifesto">
+        <div class="hot-take">
+            <h1>You do not need your frameworks.</h1>
+        </div>
+        <div class="hot-take">
+            <h1>BLOAT!</h1>
+        </div>
+        <div class="hot-take">
+            <h1>If your site is more than 14kb</h1>
+            <h1>You are either making the new Facebook</h1>
+            <h1>Or something is really wrong</h1>
+        </div>
+        
+        <p><strong>thats it, thats the message i wanted you to see</strong></p>
+        <p>nothing is hidden in the console</p>
+        
+        <h2>More Hot Takes</h2>
+        
+        <div class="hot-take">
+            <p><strong>Your React app doesn't need 2MB of JavaScript to display a blog post.</strong></p>
+            <p>A blog post is literally just text. HTML was invented for this exact purpose.</p>
+        </div>
+        
+        <div class="hot-take">
+            <p><strong>CSS Grid and Flexbox are already in your browser.</strong></p>
+            <p>You don't need Bootstrap, Tailwind, or any other CSS framework. Learn CSS once and stop downloading the same layout patterns over and over.</p>
+        </div>
+        
+        <div class="hot-take">
+            <p><strong>Build tools are a scam.</strong></p>
+            <p>Webpack, Vite, Rollup... just serving files was already solved in 1991. Your HTML file doesn't need to be "built".</p>
+        </div>
+        
+        <div class="hot-take">
+            <p><strong>npm install anxiety</strong></p>
+            <p>Every time you run npm install, you're trusting 1,000+ packages written by strangers. That's not engineering, that's faith.</p>
+        </div>
+    </section>
+
+    <section class="principles">
+        <h2>The Principles</h2>
+        <ul>
+            <li><strong>HTML First:</strong> Start with semantic HTML. It's accessible by default.</li>
+            <li><strong>CSS Second:</strong> Style with pure CSS. It's more powerful than you remember.</li>
+            <li><strong>JavaScript Last:</strong> Only add JS when HTML and CSS genuinely can't do it.</li>
+            <li><strong>Size Matters:</strong> Every kilobyte costs your users time and money. Respect both.</li>
+            <li><strong>Fast by Default:</strong> A static HTML file loads instantly. Complexity is a choice.</li>
+            <li><strong>Dependencies are Liabilities:</strong> Each dependency is a point of failure, a security risk, and maintenance burden.</li>
+            <li><strong>View Source:</strong> Your code should be readable without a sourcemap. If you can't view-source it, you don't really own it.</li>
+            <li><strong>Works Forever:</strong> HTML from 1995 still renders. Your React app will need a rewrite in 3 years.</li>
+            <li><strong>Mobile First:</strong> Half your users are on phones. Make it work on a 3G connection.</li>
+            <li><strong>Brutalist Honesty:</strong> Expose the structure. HTML is beautiful without the makeup.</li>
+        </ul>
+    </section>
+
+    <section class="stats">
+        <h3>Build Stats</h3>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-value" id="filesize">~14kb</span>
+                <span class="stat-label">Total Size</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">0ms</span>
+                <span class="stat-label">Build Time</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">0</span>
+                <span class="stat-label">Dependencies</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">100%</span>
+                <span class="stat-label">Pure HTML/CSS</span>
+            </div>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.9em; opacity: 0.8;">
+            Load time: Instant (because it's just HTML)<br>
+            npm packages: 0 (we don't do that here)<br>
+            Framework overhead: 0 bytes (pure peak)
+        </p>
+    </section>
+
+    <section class="view-source">
+        <h3>📖 Seriously, View Source</h3>
+        <p>Right-click → View Page Source. That's it. No sourcemaps, no minification, no obfuscation.</p>
+        <p>This is what web development should look like.</p>
+        <p><strong>Keyboard shortcut:</strong> Ctrl+U (or Cmd+Option+U on Mac)</p>
+    </section>
+
+    <section class="projects">
+        <h2>Projects / Portfolio</h2>
+        <p>Building the web, one minimal byte at a time.</p>
+        
+        <ul>
+            <li>
+                <strong>This Site</strong> - A manifesto in pure HTML/CSS. No build step, no frameworks, just peak web.
+                <br><a href="https://github.com/SEOJIAF/Portfolio">View on GitHub</a>
+            </li>
+            <li>
+                <strong>Peak HTML Validator</strong> - A tool to shame websites over 14kb. Coming soon™
+            </li>
+            <li>
+                <strong>Zero Dependency Web Apps</strong> - Proof that you don't need npm for everything.
+            </li>
+            <li>
+                <strong>HTML-First Components</strong> - Web components, but actually just HTML with a sprinkle of CSS.
+            </li>
+        </ul>
+        
+        <h3>Find Me</h3>
+        <p>
+            <a href="https://github.com/SEOJIAF">GitHub</a> • 
+            <a href="https://gitea.oryks.org">Gitea</a>
+        </p>
+    </section>
+
+    <footer>
+        <p><strong>The Web is Already Fast</strong></p>
+        <p>We just keep making it slow.</p>
+        
+        <div class="footer-links">
+            <a href="https://github.com/SEOJIAF/Portfolio">Source Code</a>
+            <a href="https://motherfuckingwebsite.com/">Inspiration</a>
+            <a href="https://justinjackson.ca/words.html">Words</a>
+        </div>
+        
+        <div class="badge" id="size-badge">✓ Under 14kb</div>
+        
+        <p style="margin-top: 2rem; font-size: 0.9em; opacity: 0.7;">
+            Made with HTML and CSS. Zero frameworks. Zero build tools. Zero regrets.
+        </p>
+    </footer>
+
+    <script>
+        console.log("you are too gullible");
+        console.log("https://gitea.oryks.org");
+        console.log("");
+        console.log("But seriously, thanks for checking the console!");
+        console.log("This page is pure HTML/CSS. No frameworks, no build tools.");
+        console.log("File size: " + (document.documentElement.outerHTML.length / 1024).toFixed(2) + "kb");
+        console.log("");
+        console.log("The web doesn't need to be complicated.");
+        console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+        
+        // Update file size display
+        window.addEventListener('load', function() {
+            const sizeInKb = (document.documentElement.outerHTML.length / 1024).toFixed(2);
+            const sizeElement = document.getElementById('filesize');
+            if (sizeElement) {
+                sizeElement.textContent = sizeInKb + 'kb';
+            }
+            
+            // Update badge color based on size
+            const badge = document.getElementById('size-badge');
+            if (badge && parseFloat(sizeInKb) > 14) {
+                badge.style.background = '#dc3545';
+                badge.textContent = '⚠ Over 14kb';
+            }
+        });
+    </script>
+</body>
 </html>
